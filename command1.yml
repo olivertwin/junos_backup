@@ -1,0 +1,17 @@
+---
+- name: SCRIPT FOR BACKUP
+  gather_facts: false
+  hosts: ASBR1
+  vars_files:
+    - /home/coder/creds_junos
+  tasks:
+   - name: BACKUP RUNNING-CONFIG
+     junipernetworks.junos.junos_config:
+       backup: yes
+       backup_options:
+         dir_path: /home/coder/backup
+         backup_format: json
+         filename: ASBR1.conf
+
+     
+
